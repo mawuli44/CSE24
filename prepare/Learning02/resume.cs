@@ -1,25 +1,32 @@
 using System;
 
-class Program
+public class Resume
 {
-    static void Main()
+    public string _personName;
+    public List<Job> _jobs;
+
+    // initialize the resume details
+    public Resume(string personName)
     {
-        // instances of the Job class
-        Job job1 = new Job("Microsoft", "Software Engineer", 2019, 2022);
-        Job job2 = new Job("Apple", "Manager", 2022, 2023);
+        _personName = personName;
+        _jobs = new List<Job>();
+    }
 
-        // Displaying job details using the Display method
-        job1.Display();
-        job2.Display();
+    // Method to add a job to the list
+    public void AddJob(Job job)
+    {
+        _jobs.Add(job);
+    }
 
-        // Creating an instance of the Resume class
-        Resume myResume = new Resume("Allison Rose");
+    // Displaying the method to show the resume details
+    public void Display()
+    {
+        Console.WriteLine($"Name: {_personName}");
+        Console.WriteLine("Jobs:");
 
-        // Adding jobs to the resume
-        myResume.AddJob(job1);
-        myResume.AddJob(job2);
-
-        // Display resume details using the Display method
-        myResume.Display();
+        foreach (var job in _jobs)
+        {
+            job.Display();
+        }
     }
 }
