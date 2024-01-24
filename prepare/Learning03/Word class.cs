@@ -1,20 +1,18 @@
-using System.Security.Cryptography.X509Certificates;
-
-public class word
+public class Word
 {
+    private string _text;
+    private bool _isHidden;
 
-  public string _text;
-  public bool _isHidden;
+    public Word(string text)
+    {
+        _text = text;
+        _isHidden = false;
+    }
 
-  public word(string _text)
- {
-  _text = text;
-  _isHidden = false;
- }
- public void Hide()
- {
-    _isHidden = true;
-  }
+    public void Hide()
+    {
+        _isHidden = true;
+    }
 
     public void Show()
     {
@@ -31,7 +29,3 @@ public class word
         return _isHidden ? new string('_', _text.Length) : _text;
     }
 }
-
-
-
-
