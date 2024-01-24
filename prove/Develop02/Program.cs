@@ -134,7 +134,7 @@ class Journal
         }
     }
 
-    private string GetRandomPrompt()
+    public string GetRandomPrompt()
     {
         List<string> prompts = new List<string>
         {
@@ -144,4 +144,10 @@ class Journal
             "What was the strongest emotion I felt today?",
             "If I had one thing I could do over today, what would it be?"
         };
-        return prompts
+        
+          Random random = new Random();
+        int index = random.Next(prompts.Count);
+
+        return prompts[index];
+    }
+}
