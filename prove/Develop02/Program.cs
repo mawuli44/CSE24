@@ -145,7 +145,7 @@ class Journal
             "If I had one thing I could do over today, what would it be?"
         };
         
-          Random random = new Random();
+            Random random = new Random();
         int index = random.Next(prompts.Count);
 
         return prompts[index];
