@@ -1,6 +1,3 @@
-using System;
-
-      // Word class.cs
 public class Word
 {
     public string Text { get; private set; }
@@ -18,7 +15,7 @@ public class Word
     }
 }
 
-// Reference class.cs
+// Reference.cs
 public class Reference
 {
     public string Book { get; }
@@ -40,7 +37,7 @@ public class Reference
     }
 }
 
-// Scripture class.cs
+// Scripture.cs
 public class Scripture
 {
     private Reference reference;
@@ -73,7 +70,7 @@ public class Scripture
         List<Word> visibleWords = words.Where(word => !word.IsHidden).ToList();
         if (visibleWords.Count == 0)
         {
-            return false; 
+            return false; // All words are hidden
         }
 
         Random random = new Random();
@@ -82,11 +79,11 @@ public class Scripture
         return true;
     }
 }
- 
-  // Program.cs
+
+// Program.cs
 class Program
 {
-     static void Main(string[] args)   
+    static void Main(string[] args)
     {
         // Example usage
         Reference reference = new Reference("John", 3, 16, 16);
