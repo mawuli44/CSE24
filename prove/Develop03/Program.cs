@@ -1,7 +1,6 @@
 using System;
 
-
-        // Word class.cs
+      // Word class.cs
 public class Word
 {
     public string Text { get; private set; }
@@ -82,6 +81,8 @@ public class Scripture
         visibleWords[index].IsHidden = true;
         return true;
     }
+}
+ 
   // Program.cs
 class Program
 {
@@ -108,3 +109,4 @@ class Program
             wordsHidden = scripture.HideRandomWords();
         }
     }
+}
