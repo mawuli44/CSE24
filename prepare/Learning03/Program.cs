@@ -1,10 +1,8 @@
 using System;
 
 class Program
-{
-    static void Main(string[] args)
     {
-    
+     static void Main(string[] args)
     {
         // Creating instances using different constructors
         Fraction fraction1 = new Fraction();      // 1/1
