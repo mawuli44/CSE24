@@ -135,7 +135,7 @@ public class ListingActivity : Activity
     {
     }
 
-    public void Run()
+    public void Run() 
     {
         DisplayStartingMessage();
         Console.WriteLine("Starting listing activity...");
