@@ -9,6 +9,7 @@ abstract class Goal
     protected string _description;
     protected int _points;
 
+    // Constructor
     public Goal(string shortName, string description, int points)
     {
         _shortName = shortName;
@@ -26,8 +27,9 @@ abstract class Goal
 // Derived class for simple goals
 class SimpleGoal : Goal
 {
-    private bool _isComplete;
+    protected bool _isComplete; // Change to protected
 
+    // Constructor
     public SimpleGoal(string shortName, string description, int points) : base(shortName, description, points)
     {
         _isComplete = false;
@@ -36,8 +38,15 @@ class SimpleGoal : Goal
     // Override methods
     public override void RecordEvent()
     {
-        _isComplete = true;
-        Console.WriteLine($"{_shortName} goal completed! {_points} points earned.");
+        if (!_isComplete)
+        {
+            _isComplete = true;
+            Console.WriteLine($"{_shortName} goal completed! {_points} points earned.");
+        }
+        else
+        {
+            Console.WriteLine($"{_shortName} goal has already been completed.");
+        }
     }
 
     public override bool IsComplete()
@@ -91,9 +100,9 @@ class EternalGoal : Goal
 // Derived class for checklist goals
 class ChecklistGoal : Goal
 {
-    private int _amountCompleted;
-    private int _target;
-    private int _bonus;
+    protected int _amountCompleted;
+    protected int _target;
+    protected int _bonus;
 
     // Constructor
     public ChecklistGoal(string shortName, string description, int points, int target, int bonus) : base(shortName, description, points)
@@ -157,7 +166,7 @@ class GoalManager
         Console.WriteLine("Goal Names:");
         foreach (Goal goal in _goals)
         {
-            Console.WriteLine(goal._shortName);
+            Console.WriteLine(goal._shortName); // Change to use getter method
         }
     }
 
@@ -257,5 +266,33 @@ class GoalManager
                 }
             }
         }
+        Console.WriteLine("Goals and score loaded successfully.");
+    }
+}
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        GoalManager goalManager = new GoalManager();
+
+        // Example usage
+        goalManager.CreateGoal("SimpleGoal", "Exercise", "Exercise for 30 minutes", 100);
+        goalManager.CreateGoal("EternalGoal", "Read Scriptures", "Read scriptures daily", 50);
+        goalManager.CreateGoal("ChecklistGoal", "Attend Temple", "Attend temple 10 times", 50, 10, 500);
+
+        goalManager.RecordEvent("Exercise");
+        goalManager.RecordEvent("Read Scriptures");
+        goalManager.RecordEvent("Attend Temple");
+
+        goalManager.DisplayPlayerInfo();
+        goalManager.ListGoalDetails();
+
+        // Save and load example
+        goalManager.SaveGoals("goals.txt");
+        goalManager.LoadGoals("goals.txt");
+
+        goalManager.DisplayPlayerInfo();
+        goalManager.ListGoalDetails();
     }
 }
