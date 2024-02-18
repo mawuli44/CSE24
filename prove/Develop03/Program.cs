@@ -79,8 +79,7 @@ public class Scripture
         return true;
     }
 }
-
-// Program.cs
+// program.cs
 class Program
 {
     static void Main(string[] args)
